@@ -48,13 +48,13 @@
     <Compile Include="Implementation\TorreHanoiApplicationService.cs" />
     <Compile Include="Interface\ITorreHanoiApplicationService.cs" />
     <Compile Include="Mapper\TorreHanoiAdapter.cs" />
-    <Compile Include="Message\AdicionarNovoPorcessoResponse.cs" />
+    <Compile Include="Message\AdicionarNovoProcessoResponse.cs" />
     <Compile Include="Message\ObterImagemProcessoPorResponse.cs" />
     <Compile Include="Message\ObterProcessoPorResponse.cs" />
     <Compile Include="Message\ObterTodosProcessosResponse.cs" />
     <Compile Include="Message\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validation\AdicionarNovoPorcessoValidation.cs" />
+    <Compile Include="Validation\AdicionarNovoProcessoValidation.cs" />
     <Compile Include="Validation\ObterImagemProcessoPorValidation.cs" />
     <Compile Include="Validation\ObterProcessoPorValidation.cs" />
   </ItemGroup>

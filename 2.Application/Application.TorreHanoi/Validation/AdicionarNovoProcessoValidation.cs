@@ -2,11 +2,11 @@
 
 namespace Application.TorreHanoi.Validation
 {
-    internal static class AdicionarNovoPorcessoValidation
+    internal static class AdicionarNovoProcessoValidation
     {
-        internal static AdicionarNovoPorcessoResponse Validation(this int numeroDiscos)
+        internal static AdicionarNovoProcessoResponse Validation(this int numeroDiscos)
         {
-            var response = new AdicionarNovoPorcessoResponse();
+            var response = new AdicionarNovoProcessoResponse();
 
             if (numeroDiscos >= 1)
             {

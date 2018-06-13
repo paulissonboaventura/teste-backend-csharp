@@ -4,7 +4,7 @@ namespace Application.TorreHanoi.Interface
 {
     public interface ITorreHanoiApplicationService
     {
-        AdicionarNovoPorcessoResponse AdicionarNovoPorcesso(int numeroDiscos);
+        AdicionarNovoProcessoResponse AdicionarNovoProcesso(int numeroDiscos);
 
         ObterProcessoPorResponse ObterProcessoPor(string id);
 

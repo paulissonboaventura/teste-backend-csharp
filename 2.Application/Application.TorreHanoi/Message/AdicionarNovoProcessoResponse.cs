@@ -2,7 +2,7 @@
 
 namespace Application.TorreHanoi.Message
 {
-    public class AdicionarNovoPorcessoResponse : Response
+    public class AdicionarNovoProcessoResponse : Response
     {
         public Guid IdProcesso { get; set; }
     }

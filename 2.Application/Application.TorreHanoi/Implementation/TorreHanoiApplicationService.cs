@@ -24,7 +24,7 @@ namespace Application.TorreHanoi.Implementation
             _designerService = designerService;
         }
 
-        public AdicionarNovoPorcessoResponse AdicionarNovoPorcesso(int numeroDiscos)
+        public AdicionarNovoProcessoResponse AdicionarNovoProcesso(int numeroDiscos)
         {
             var response = numeroDiscos.Validation();
 

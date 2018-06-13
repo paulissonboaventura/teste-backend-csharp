@@ -25,12 +25,12 @@ namespace Tests.TorreHanoi.Presentation
         [TestInitialize]
         public void SetUp()
         {
-            var mockAdicionarNovoPorcessoResponse = new AdicionarNovoPorcessoResponse { IdProcesso = Guid.NewGuid(), StatusCode = HttpStatusCode.Accepted };
+            var mockAdicionarNovoProcessoResponse = new AdicionarNovoProcessoResponse { IdProcesso = Guid.NewGuid(), StatusCode = HttpStatusCode.Accepted };
             var mockObterProcessoPorResponse = new ObterProcessoPorResponse { StatusCode = HttpStatusCode.OK, Processo = CriarMockTorreHanoiCompletaDto() };
             var mockObterTodosProcessosResponse = new ObterTodosProcessosResponse { StatusCode = HttpStatusCode.OK, Processos = CriarMockTorreHanoiResumoDto() };
 
             var mockTorreHanoiApplicationService = new Mock<ITorreHanoiApplicationService>();
-            mockTorreHanoiApplicationService.Setup(s => s.AdicionarNovoPorcesso(It.IsAny<int>())).Returns(() => mockAdicionarNovoPorcessoResponse);
+            mockTorreHanoiApplicationService.Setup(s => s.AdicionarNovoProcesso(It.IsAny<int>())).Returns(() => mockAdicionarNovoProcessoResponse);
             mockTorreHanoiApplicationService.Setup(s => s.ObterProcessoPor(It.Is<string>(id => id.Equals(_idProcesso)))).Returns(() => mockObterProcessoPorResponse);
             mockTorreHanoiApplicationService.Setup(s => s.ObterTodosProcessos()).Returns(() => mockObterTodosProcessosResponse);
 
@@ -45,7 +45,7 @@ namespace Tests.TorreHanoi.Presentation
         {
             var httpResponse = _controller.Post(3);
 
-            var response = JsonConvert.DeserializeObject<AdicionarNovoPorcessoResponse>(httpResponse.Content.ReadAsStringAsync().Result);
+            var response = JsonConvert.DeserializeObject<AdicionarNovoProcessoResponse>(httpResponse.Content.ReadAsStringAsync().Result);
 
             Assert.IsNotNull(httpResponse);
             Assert.AreEqual(httpResponse.StatusCode, HttpStatusCode.Accepted);

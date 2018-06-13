@@ -25,7 +25,7 @@ namespace Presentation.TorreHanoi.Controllers
         [Route("Api/Torre/Hanoi/{numeroDiscos}")]
         public HttpResponseMessage Post(int numeroDiscos)
         {
-            var response = _service.AdicionarNovoPorcesso(numeroDiscos);
+            var response = _service.AdicionarNovoProcesso(numeroDiscos);
 
             return Request.CreateResponse(response.StatusCode, response);
         }
