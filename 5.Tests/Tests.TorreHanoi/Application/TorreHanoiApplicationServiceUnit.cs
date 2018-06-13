@@ -25,6 +25,7 @@ namespace Tests.TorreHanoi.Application
             mockLogger.Setup(s => s.Logar(It.IsAny<string>(), It.IsAny<TipoLog>()));
 
             var mockDesignerService = new Mock<IDesignerService>();
+            mockDesignerService.Setup(s => s.Desenhar()).Returns(() => new global::System.Drawing.Bitmap(3, 3));
 
             var mockTorreHanoiDomainService = new Mock<ITorreHanoiDomainService>();
             mockTorreHanoiDomainService.Setup(s => s.Criar(It.IsAny<int>())).Returns(Guid.NewGuid);
@@ -38,7 +39,7 @@ namespace Tests.TorreHanoi.Application
         [TestCategory(CategoriaTeste)]
         public void AdicionarNovoProcesso_Deve_Retornar_Sucesso()
         {
-            var response = _service.AdicionarNovoPorcesso(3);
+            var response = _service.AdicionarNovoProcesso(3);
 
             Assert.IsNotNull(response);
             Assert.AreEqual(response.StatusCode, HttpStatusCode.Accepted);
@@ -79,7 +80,15 @@ namespace Tests.TorreHanoi.Application
         [TestCategory(CategoriaTeste)]
         public void ObterImagemProcessoPor_Deve_Retornar_Imagem()
         {
-            Assert.Fail();
+            var response = _service.ObterImagemProcessoPor(Guid.NewGuid().ToString());
+
+            Assert.IsNotNull(response);
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            Assert.IsTrue(response.IsValid);
+            Assert.IsTrue(response.MensagensDeErro.Count == 0);
+            Assert.IsNotNull(response.Imagem);
+            Assert.IsTrue(response.Imagem.Size.Height > 0);
+            Assert.IsTrue(response.Imagem.Size.Width > 0);
         }
     }
 }
