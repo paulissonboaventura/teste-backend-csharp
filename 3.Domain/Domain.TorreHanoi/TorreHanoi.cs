@@ -39,12 +39,12 @@ namespace Domain.TorreHanoi
             _log.Logar($"TorreHanoi id {Id} -> Iniciando Processamento", TipoLog.Fluxo);
             try
             {
-                Resolver(Discos.Count, Origem, Intermediario, Destino);
+                Resolver(Discos.Count, Origem, Destino, Intermediario);
 
                 Status = TipoStatus.FinalizadoSucesso;
                 _log.Logar($"TorreHanoi id {Id} -> Processo finalizado com sucesso", TipoLog.Fluxo);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Status = TipoStatus.FinalizadoErro;
                 _log.Logar($"TorreHanoi id {Id} -> Ocorreu um erro ao finalizar o processo. Ex: {ex.Message}", TipoLog.Fluxo);
@@ -55,16 +55,18 @@ namespace Domain.TorreHanoi
             }
         }
 
-        private void Resolver(int numeroDiscosRestante, Pino origem, Pino intermediario, Pino destino)
+        private void Resolver(int numeroDiscosRestante, Pino origem, Pino destino, Pino intermediario)
         {
-            if (numeroDiscosRestante <= 1)
+            if (numeroDiscosRestante == 1)
             {
-                return;
+                MoverDisco(origem, destino);
             }
-
-            Resolver(numeroDiscosRestante - 1, origem, destino, intermediario);
-            MoverDisco(origem, destino);
-            Resolver(numeroDiscosRestante - 1, intermediario, origem, destino);
+            else
+            {
+                Resolver(numeroDiscosRestante - 1, origem, intermediario, destino);
+                MoverDisco(origem, destino);
+                Resolver(numeroDiscosRestante - 1, intermediario, destino, origem);
+            }
         }
 
         private void MoverDisco(Pino pinoInicio, Pino pinoFim)
